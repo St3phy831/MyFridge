@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.myfridge.fragments.RefrigeratorFragment;
 import com.example.myfridge.fragments.ShoppingListFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_fridge:
                     default:
-                        fragment = new ShoppingListFragment();
+                        fragment = new RefrigeratorFragment();
                         Toast.makeText(getApplicationContext(), "Fridge List", Toast.LENGTH_SHORT).show();
                         break;
 

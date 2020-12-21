@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ShoppingListFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
