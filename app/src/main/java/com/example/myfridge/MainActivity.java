@@ -53,5 +53,6 @@ public class MainActivity extends AppCompatActivity {
         });
         //Set Default selection
         bottomNavigationView.setSelectedItemId(R.id.action_list);
+
     }
 }
