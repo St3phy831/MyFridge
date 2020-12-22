@@ -1,60 +1,44 @@
 package com.example.myfridge.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.myfridge.R;
+import com.example.myfridge.cardActivities.RefrigeratorActivity;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link RefrigeratorFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class RefrigeratorFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String TAG = "Refrigerator Fragment";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    CardView cardOne;
+    CardView cardTwo;
+    CardView cardThree;
+    CardView cardFour;
+    CardView cardFive;
+    CardView cardSix;
 
     public RefrigeratorFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RefrigeratorFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RefrigeratorFragment newInstance(String param1, String param2) {
-        RefrigeratorFragment fragment = new RefrigeratorFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -62,5 +46,92 @@ public class RefrigeratorFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_refrigerator, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        cardOne = view.findViewById(R.id.dairyCard);
+        cardTwo = view.findViewById(R.id.veggieCard);
+        cardThree = view.findViewById(R.id.fruitCard);
+        cardFour = view.findViewById(R.id.juicesCard);
+        cardFive = view.findViewById(R.id.meatCard);
+        cardSix = view.findViewById(R.id.otherCard);
+
+        cardOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Opens Refrigerator Activity
+                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
+                //Send data of this activity through bundle
+                Bundle extras = new Bundle();
+                extras.putString("color", "#4287f5");
+                extras.putString("title", "Dairy List");
+                intent.putExtras(extras);
+                startActivity(intent);
+                Toast.makeText(getContext(), "Dairy Activity", Toast.LENGTH_SHORT).show();
+            }
+        });
+        cardTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("color", "#78de95");
+                extras.putString("title", "Veggie List");
+                intent.putExtras(extras);
+                startActivity(intent);
+                Toast.makeText(getContext(), "Veggie Activity", Toast.LENGTH_SHORT).show();
+            }
+        });
+        cardThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("color", "#f384f5");
+                extras.putString("title", "Fruit List");
+                intent.putExtras(extras);
+                startActivity(intent);
+                Toast.makeText(getContext(), "Fruit Activity", Toast.LENGTH_SHORT).show();
+            }
+        });
+        cardFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("color", "#f7ab40");
+                extras.putString("title", "Juice List");
+                intent.putExtras(extras);
+                startActivity(intent);
+                Toast.makeText(getContext(), "Juices Activity", Toast.LENGTH_SHORT).show();
+            }
+        });
+        cardFive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("color", "#fa6964");
+                extras.putString("title", "Meat List");
+                intent.putExtras(extras);
+                startActivity(intent);
+                Toast.makeText(getContext(), "Meat Activity", Toast.LENGTH_SHORT).show();
+            }
+        });
+        cardSix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("color", "#b696fa");
+                extras.putString("title", "Other List");
+                intent.putExtras(extras);
+                startActivity(intent);
+                Toast.makeText(getContext(), "Other Activity", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
