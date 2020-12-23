@@ -16,6 +16,9 @@ import android.widget.Toast;
 import com.example.myfridge.R;
 import com.example.myfridge.cardActivities.RefrigeratorActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -29,6 +32,19 @@ public class RefrigeratorFragment extends Fragment {
     CardView cardFour;
     CardView cardFive;
     CardView cardSix;
+
+    List<String> itemsOne;
+    List<String> datesOne;
+    List<String> itemsTwo;
+    List<String> datesTwo;
+    List<String> itemsThree;
+    List<String> datesThree;
+    List<String> itemsFour;
+    List<String> datesFour;
+    List<String> itemsFive;
+    List<String> datesFive;
+    List<String> itemsSix;
+    List<String> datesSix;
 
     public RefrigeratorFragment() {
         // Required empty public constructor
@@ -59,6 +75,56 @@ public class RefrigeratorFragment extends Fragment {
         cardFive = view.findViewById(R.id.meatCard);
         cardSix = view.findViewById(R.id.otherCard);
 
+        //Data for each item corresponding to specific card w/ expiration dates
+        itemsOne = new ArrayList<>();
+        itemsOne.add("Milk");
+        itemsOne.add("Yogurt");
+
+        datesOne = new ArrayList<>();
+        datesOne.add("EXP: 12/23/20");
+        datesOne.add("EXP: 12/24/20");
+
+        itemsTwo = new ArrayList<>();
+        itemsTwo.add("Carrots");
+        itemsTwo.add("Broccoli");
+
+        datesTwo = new ArrayList<>();
+        datesTwo.add("EXP: 12/23/20");
+        datesTwo.add("EXP: 12/24/20");
+
+        itemsThree = new ArrayList<>();
+        itemsThree.add("strawberries");
+        itemsThree.add("pineapple");
+
+        datesThree = new ArrayList<>();
+        datesThree.add("EXP: 12/23/20");
+        datesThree.add("EXP: 12/24/20");
+
+        itemsFour = new ArrayList<>();
+        itemsFour.add("apple juice");
+        itemsFour.add("cranberry juice");
+
+        datesFour = new ArrayList<>();
+        datesFour.add("EXP: 12/23/20");
+        datesFour.add("EXP: 12/24/20");
+
+        itemsFive = new ArrayList<>();
+        itemsFive.add("Ham");
+        itemsFive.add("Chicken");
+
+        datesFive = new ArrayList<>();
+        datesFive.add("EXP: 12/23/20");
+        datesFive.add("EXP: 12/24/20");
+
+        itemsSix = new ArrayList<>();
+        itemsSix.add("Cake");
+        itemsSix.add("Burrito");
+
+        datesSix = new ArrayList<>();
+        datesSix.add("EXP: 12/23/20");
+        datesSix.add("EXP: 12/24/20");
+
+        //Each card has a click listener to open activity and pass bundle of information
         cardOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +134,8 @@ public class RefrigeratorFragment extends Fragment {
                 Bundle extras = new Bundle();
                 extras.putString("color", "#4287f5");
                 extras.putString("title", "Dairy List");
+                extras.putStringArrayList("items", (ArrayList<String>) itemsOne);
+                extras.putStringArrayList("dates", (ArrayList<String>) datesOne);
                 intent.putExtras(extras);
                 startActivity(intent);
                 Toast.makeText(getContext(), "Dairy Activity", Toast.LENGTH_SHORT).show();
@@ -80,6 +148,8 @@ public class RefrigeratorFragment extends Fragment {
                 Bundle extras = new Bundle();
                 extras.putString("color", "#78de95");
                 extras.putString("title", "Veggie List");
+                extras.putStringArrayList("items", (ArrayList<String>) itemsTwo);
+                extras.putStringArrayList("dates", (ArrayList<String>) datesTwo);
                 intent.putExtras(extras);
                 startActivity(intent);
                 Toast.makeText(getContext(), "Veggie Activity", Toast.LENGTH_SHORT).show();
@@ -92,6 +162,8 @@ public class RefrigeratorFragment extends Fragment {
                 Bundle extras = new Bundle();
                 extras.putString("color", "#f384f5");
                 extras.putString("title", "Fruit List");
+                extras.putStringArrayList("items", (ArrayList<String>) itemsThree);
+                extras.putStringArrayList("dates", (ArrayList<String>) datesThree);
                 intent.putExtras(extras);
                 startActivity(intent);
                 Toast.makeText(getContext(), "Fruit Activity", Toast.LENGTH_SHORT).show();
@@ -104,6 +176,8 @@ public class RefrigeratorFragment extends Fragment {
                 Bundle extras = new Bundle();
                 extras.putString("color", "#f7ab40");
                 extras.putString("title", "Juice List");
+                extras.putStringArrayList("items", (ArrayList<String>) itemsFour);
+                extras.putStringArrayList("dates", (ArrayList<String>) datesFour);
                 intent.putExtras(extras);
                 startActivity(intent);
                 Toast.makeText(getContext(), "Juices Activity", Toast.LENGTH_SHORT).show();
@@ -116,6 +190,8 @@ public class RefrigeratorFragment extends Fragment {
                 Bundle extras = new Bundle();
                 extras.putString("color", "#fa6964");
                 extras.putString("title", "Meat List");
+                extras.putStringArrayList("items", (ArrayList<String>) itemsFive);
+                extras.putStringArrayList("dates", (ArrayList<String>) datesFive);
                 intent.putExtras(extras);
                 startActivity(intent);
                 Toast.makeText(getContext(), "Meat Activity", Toast.LENGTH_SHORT).show();
@@ -128,6 +204,8 @@ public class RefrigeratorFragment extends Fragment {
                 Bundle extras = new Bundle();
                 extras.putString("color", "#b696fa");
                 extras.putString("title", "Other List");
+                extras.putStringArrayList("items", (ArrayList<String>) itemsSix);
+                extras.putStringArrayList("dates", (ArrayList<String>) datesSix);
                 intent.putExtras(extras);
                 startActivity(intent);
                 Toast.makeText(getContext(), "Other Activity", Toast.LENGTH_SHORT).show();
