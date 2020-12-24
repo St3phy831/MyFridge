@@ -8,8 +8,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myfridge.R;
-
 import java.util.List;
 
 //display data from model in row of recycler view
@@ -18,6 +16,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>{
     public interface OnLongClickListener{
         void onItemLongClicked(int position);
     }
+
     List<String> items;
     OnLongClickListener longClickListener;
 
@@ -69,7 +68,6 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>{
                 public boolean onLongClick(View view) {
                     //notify listener which item was clicked
                     longClickListener.onItemLongClicked(getAdapterPosition());
-
                     return true;
                 }
             });

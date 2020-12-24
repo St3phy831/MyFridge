@@ -3,6 +3,7 @@ package com.example.myfridge.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,17 +14,26 @@ import com.example.myfridge.R;
 import java.util.List;
 
 public class FridgeItemsAdapter extends RecyclerView.Adapter<FridgeItemsAdapter.ViewHolder>{
+
+    public interface OnLongClick{
+        void onItemClicked(int position);
+    }
+
     List<String> fridgeItems;
     List<String> itemDates;
+    RelativeLayout itemContainer;
+    OnLongClick longClickListener;
 
-    public FridgeItemsAdapter(List<String> fridgeItems, List<String> itemDates){
+    public FridgeItemsAdapter(List<String> fridgeItems, List<String> itemDates, OnLongClick longClickListener){
         this.fridgeItems = fridgeItems;
         this.itemDates = itemDates;
+        this.longClickListener = longClickListener;
     }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View listView = LayoutInflater.from(parent.getContext()).inflate(R.layout.fridge_items, parent, false);
+        itemContainer = listView.findViewById(R.id.itemContainer);
         return new ViewHolder(listView);
     }
 
@@ -53,6 +63,15 @@ public class FridgeItemsAdapter extends RecyclerView.Adapter<FridgeItemsAdapter.
         public void bind(String item, String date) {
             tvFridgeItem.setText(item);
             tvDate.setText(date);
+
+            itemContainer.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    //notify listener which item was clicked
+                    longClickListener.onItemClicked(getAdapterPosition());
+                    return true;
+                }
+            });
         }
     }
 }
