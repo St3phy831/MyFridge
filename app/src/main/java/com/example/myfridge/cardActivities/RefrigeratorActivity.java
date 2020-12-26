@@ -54,6 +54,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
 
         //Since Items will be added to Refrigerator fragment, saveItems() will be there to save to
         // corresponding text file.
+        //saveItems();
 
         loadItems();
 
@@ -77,43 +78,37 @@ public class RefrigeratorActivity extends AppCompatActivity {
     }
     //Checks which card view to save and load for appropriate date and item list.
     private File getDataFileForItem(String type){
-        if(type.equals("dairy")){
-            return new File(getFilesDir(), "dairyItems.txt");
-        }
-        else if(type.equals("veggie")){
-            return new File(getFilesDir(), "veggieItems.txt");
-        }
-        else if(type.equals("fruit")){
-            return new File(getFilesDir(), "fruitItems.txt");
-        }
-        else if(type.equals("juice")){
-            return new File(getFilesDir(), "juiceItems.txt");
-        }
-        else if(type.equals("meat")){
-            return new File(getFilesDir(), "meatItems.txt");
-        }
-        else{
-            return new File(getFilesDir(), "otherItems.txt");
+        switch(type){
+            case "dairy":
+                return new File(getFilesDir(), "dairyItems.txt");
+            case "veggie":
+                return new File(getFilesDir(), "veggieItems.txt");
+            case "fruit":
+                return new File(getFilesDir(), "fruitItems.txt");
+            case "juice":
+                return new File(getFilesDir(), "juiceItems.txt");
+            case "meat":
+                return new File(getFilesDir(), "meatItems.txt");
+            case "other":
+            default:
+                return new File(getFilesDir(), "otherItems.txt");
         }
     }
     private File getDataFileForDate(String type){
-        if(type.equals("dairy")){
-            return new File(getFilesDir(), "dairyDate.txt");
-        }
-        else if(type.equals("veggie")){
-            return new File(getFilesDir(), "veggieDate.txt");
-        }
-        else if(type.equals("fruit")){
-            return new File(getFilesDir(), "fruitDate.txt");
-        }
-        else if(type.equals("juice")){
-            return new File(getFilesDir(), "juiceDate.txt");
-        }
-        else if(type.equals("meat")){
-            return new File(getFilesDir(), "meatDate.txt");
-        }
-        else{
-            return new File(getFilesDir(), "otherDate.txt");
+        switch(type){
+            case "dairy":
+                return new File(getFilesDir(), "dairyDate.txt");
+            case "veggie":
+                return new File(getFilesDir(), "veggieDate.txt");
+            case "fruit":
+                return new File(getFilesDir(), "fruitDate.txt");
+            case "juice":
+                return new File(getFilesDir(), "juiceDate.txt");
+            case "meat":
+                return new File(getFilesDir(), "meatDate.txt");
+            case "other":
+            default:
+                return new File(getFilesDir(), "otherDate.txt");
         }
     }
     //This function will load items by reading every line on data file

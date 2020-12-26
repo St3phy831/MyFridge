@@ -38,7 +38,6 @@ public class RefrigeratorFragment extends Fragment {
     CardView cardFive;
     CardView cardSix;
 
-    //String type;
 
     List<String> itemsOne;
     List<String> datesOne;
@@ -81,6 +80,55 @@ public class RefrigeratorFragment extends Fragment {
         cardFour = view.findViewById(R.id.juicesCard);
         cardFive = view.findViewById(R.id.meatCard);
         cardSix = view.findViewById(R.id.otherCard);
+
+        //Sample Data
+//        itemsOne = new ArrayList<>();
+//        itemsOne.add("Milk");
+//        itemsOne.add("Yogurt");
+//
+//        datesOne = new ArrayList<>();
+//        datesOne.add("EXP: 12/23/20");
+//        datesOne.add("EXP: 12/24/20");
+//
+//        itemsTwo = new ArrayList<>();
+//        itemsTwo.add("Carrots");
+//        itemsTwo.add("Broccoli");
+//
+//        datesTwo = new ArrayList<>();
+//        datesTwo.add("EXP: 12/23/20");
+//        datesTwo.add("EXP: 12/24/20");
+//
+//        itemsThree = new ArrayList<>();
+//        itemsThree.add("strawberries");
+//        itemsThree.add("pineapple");
+//
+//        datesThree = new ArrayList<>();
+//        datesThree.add("EXP: 12/23/20");
+//        datesThree.add("EXP: 12/24/20");
+//
+//        itemsFour = new ArrayList<>();
+//        itemsFour.add("apple juice");
+//        itemsFour.add("cranberry juice");
+//
+//        datesFour = new ArrayList<>();
+//        datesFour.add("EXP: 12/23/20");
+//        datesFour.add("EXP: 12/24/20");
+//
+//        itemsFive = new ArrayList<>();
+//        itemsFive.add("Ham");
+//        itemsFive.add("Chicken");
+//
+//        datesFive = new ArrayList<>();
+//        datesFive.add("EXP: 12/23/20");
+//        datesFive.add("EXP: 12/24/20");
+//
+//        itemsSix = new ArrayList<>();
+//        itemsSix.add("Cake");
+//        itemsSix.add("Burrito");
+//
+//        datesSix = new ArrayList<>();
+//        datesSix.add("EXP: 12/23/20");
+//        datesSix.add("EXP: 12/24/20");
 
         //Each card has a click listener to open activity and pass bundle of information
         cardOne.setOnClickListener(new View.OnClickListener() {
@@ -176,57 +224,4 @@ public class RefrigeratorFragment extends Fragment {
             }
         });
     }
-    //TODO: Will be used to save items added through the ComposeFragment that I will create based on passed bundle
-//    private File getDataFileForItem(String type){
-//        if(type.equals("dairy")){
-//            return new File(getActivity().getCacheDir(), "dairyItems.txt");
-//        }
-//        else if(type.equals("veggie")){
-//            return new File(getActivity().getCacheDir(), "veggieItems.txt");
-//        }
-//        else if(type.equals("fruit")){
-//            return new File(getActivity().getCacheDir(), "fruitItems.txt");
-//        }
-//        else if(type.equals("juice")){
-//            return new File(getActivity().getCacheDir(), "juiceItems.txt");
-//        }
-//        else if(type.equals("meat")){
-//            return new File(getActivity().getCacheDir(), "meatItems.txt");
-//        }
-//        else{
-//            return new File(getActivity().getCacheDir(), "otherItems.txt");
-//        }
-//    }
-//    private File getDataFileForDate(String type){
-//        if(type.equals("dairy")){
-//            return new File(getActivity().getCacheDir(), "dairyDate.txt");
-//        }
-//        else if(type.equals("veggie")){
-//            return new File(getActivity().getCacheDir(), "veggieDate.txt");
-//        }
-//        else if(type.equals("fruit")){
-//            return new File(getActivity().getCacheDir(), "fruitDate.txt");
-//        }
-//        else if(type.equals("juice")){
-//            return new File(getActivity().getCacheDir(), "juiceDate.txt");
-//        }
-//        else if(type.equals("meat")){
-//            return new File(getActivity().getCacheDir(), "meatDate.txt");
-//        }
-//        else{
-//            return new File(getActivity().getCacheDir(), "otherDate.txt");
-//        }
-//    }
-//
-//    //function saves items by saving items on data file
-//    private void saveItems(String type){
-//        try {
-//            if(type.equals("dairy")){
-//                FileUtils.writeLines(getDataFileForItem(type), itemsOne);
-//                FileUtils.writeLines(getDataFileForDate(type), datesOne);
-//            }
-//        } catch (IOException e) {
-//            Log.e(TAG, "Error writing items", e);
-//        }
-//    }
 }

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MyFridge</string>
+    <string-array name="categories">
+        <item>Dairy</item>
+        <item>Veggie</item>
+        <item>Fruit</item>
+        <item>Juice</item>
+        <item>Meat</item>
+        <item>Other</item>
+    </string-array>
 </resources>
