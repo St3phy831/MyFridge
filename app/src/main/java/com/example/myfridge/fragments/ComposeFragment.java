@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,10 +39,10 @@ public class ComposeFragment extends Fragment{
     private static final String TAG = "ComposeFragment";
 
     String category;
+    String itemAdded;
 
     Button btnEnter;
     EditText item;
-    FridgeItemsAdapter fridgeItemsAdapter;
 
     public ComposeFragment() {
         // Required empty public constructor
@@ -71,11 +72,27 @@ public class ComposeFragment extends Fragment{
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
         item = view.findViewById(R.id.etItemAdded);
         btnEnter = view.findViewById(R.id.btnSubmit);
+
+
+
+        btnEnter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemAdded = item.getText().toString();
+                Bundle bundle = new Bundle();
+                bundle.putString("item", itemAdded);
+
+                //When Submit button is clicked then Refrigerator Fragment is displayed
+                FragmentManager fragmentManager = getFragmentManager();
+                RefrigeratorFragment fragment = new RefrigeratorFragment();
+                fragment.setArguments(bundle);
+                fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.flContainer, fragment, null).commit();
+            }
+        });
     }
 }

@@ -28,6 +28,9 @@ public class RefrigeratorActivity extends AppCompatActivity {
     String title;
     String color;
     String type;
+    String frag;
+    String item;
+    String date;
     List<String> items;
     List<String> dates;
     RecyclerView rvFridgeList;
@@ -47,13 +50,12 @@ public class RefrigeratorActivity extends AppCompatActivity {
         dates = data.getStringArrayList("dates");
         type = data.getString("type");
 
-
         tvTitle = findViewById(R.id.tvTitle);
         tvTitle.setText(title);
         tvTitle.setTextColor(Color.parseColor(color));
 
-        //Since Items will be added to Refrigerator fragment, saveItems() will be there to save to
-        // corresponding text file.
+
+        //This saves the items added
         //saveItems();
 
         loadItems();

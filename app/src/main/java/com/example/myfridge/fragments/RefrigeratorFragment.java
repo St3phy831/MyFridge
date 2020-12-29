@@ -39,16 +39,22 @@ public class RefrigeratorFragment extends Fragment {
     CardView cardSix;
 
 
+    //Each item and date List corresponds to a category
     List<String> itemsOne;
     List<String> datesOne;
+
     List<String> itemsTwo;
     List<String> datesTwo;
+
     List<String> itemsThree;
     List<String> datesThree;
+
     List<String> itemsFour;
     List<String> datesFour;
+
     List<String> itemsFive;
     List<String> datesFive;
+
     List<String> itemsSix;
     List<String> datesSix;
 
@@ -60,7 +66,6 @@ public class RefrigeratorFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -80,6 +85,16 @@ public class RefrigeratorFragment extends Fragment {
         cardFour = view.findViewById(R.id.juicesCard);
         cardFive = view.findViewById(R.id.meatCard);
         cardSix = view.findViewById(R.id.otherCard);
+
+        //This is just adding it to the Dairy list in hopes of it working
+        Bundle args = getArguments();
+        if(args != null){
+            String item = args.getString("item");
+            itemsOne.add(item);
+            //Just Sample data
+            datesOne.add("12/20/20");
+        }
+
 
         //Sample Data
 //        itemsOne = new ArrayList<>();
@@ -129,6 +144,7 @@ public class RefrigeratorFragment extends Fragment {
 //        datesSix = new ArrayList<>();
 //        datesSix.add("EXP: 12/23/20");
 //        datesSix.add("EXP: 12/24/20");
+
 
         //Each card has a click listener to open activity and pass bundle of information
         cardOne.setOnClickListener(new View.OnClickListener() {
