@@ -9,24 +9,24 @@ My main goal is to learn more about Android Development!
 
 ## Below is my progress so far:
 
-#### App Features
+#### App Features:
 
 - [x] Bottom Navigation between three Fragments (ToBuy List, card view of Refrigerator items, and Compose Fragment)
 - [x] A Simple ToBuy List to add items the user would like to buy
 - [x] A card view of the different categories of food products in a refrigerator
 - [x] When clicked on card each card view you can see sample data I created
 
-#### Currently working on
+#### Currently working on:
 
 - Implementing logic on Compose Fragment so it will directly add the users Refrigerator item and be displayed
-- Trying to pass data from one fragment to another, so that I can add the item to particular list
+- Trying to pass data from one fragment to another so that I can add the item to particular list
 
-#### Features I would like to add
+#### Features I would like to add:
 - Allow user to add items to refrigerator based on category
   - Be able to add item and expiration date (using Calendar)
 - Allow user to view items added through the card view
 - Add a notification for when item is expired
 
-#### Challanges
+#### Challenges:
 - I'm currently stuck on what I'm working on, which is how to pass the data added by the user to the Refrigerator Fragment to be 
 able to add and save data to be displayed
