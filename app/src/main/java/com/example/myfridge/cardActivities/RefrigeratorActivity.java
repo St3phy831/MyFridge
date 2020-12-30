@@ -28,9 +28,9 @@ public class RefrigeratorActivity extends AppCompatActivity {
     String title;
     String color;
     String type;
-    String frag;
-    String item;
-    String date;
+    String added;
+    String itemAdded;
+    String dateAdded;
     List<String> items;
     List<String> dates;
     RecyclerView rvFridgeList;
@@ -49,14 +49,13 @@ public class RefrigeratorActivity extends AppCompatActivity {
         items = data.getStringArrayList("items");
         dates = data.getStringArrayList("dates");
         type = data.getString("type");
+        added = data.getString("added");
+        itemAdded = data.getString("itemAdded");
+        dateAdded = data.getString("dateAdded");
 
         tvTitle = findViewById(R.id.tvTitle);
         tvTitle.setText(title);
         tvTitle.setTextColor(Color.parseColor(color));
-
-
-        //This saves the items added
-        //saveItems();
 
         loadItems();
 
@@ -72,6 +71,14 @@ public class RefrigeratorActivity extends AppCompatActivity {
                 saveItems();
             }
         };
+
+        //This saves the items added
+        if(added.equals("true")){
+            items.add(itemAdded);
+            dates.add(dateAdded);
+            Toast.makeText(getApplicationContext(), "Item was added", Toast.LENGTH_SHORT).show();
+            saveItems();
+        }
 
         rvFridgeList = findViewById(R.id.rvFridgeItems);
         fridgeItemsAdapter = new FridgeItemsAdapter(items, dates, longClick);

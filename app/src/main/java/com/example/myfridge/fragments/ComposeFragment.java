@@ -86,6 +86,7 @@ public class ComposeFragment extends Fragment{
                 itemAdded = item.getText().toString();
                 Bundle bundle = new Bundle();
                 bundle.putString("item", itemAdded);
+                bundle.putString("category", category);
 
                 //When Submit button is clicked then Refrigerator Fragment is displayed
                 FragmentManager fragmentManager = getFragmentManager();
