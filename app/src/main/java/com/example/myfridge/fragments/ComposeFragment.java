@@ -1,7 +1,6 @@
 package com.example.myfridge.fragments;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,28 +8,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myfridge.R;
-import com.example.myfridge.adapters.FridgeItemsAdapter;
-import com.example.myfridge.cardActivities.RefrigeratorActivity;
-
-import org.apache.commons.io.FileUtils;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,9 +31,12 @@ public class ComposeFragment extends Fragment{
 
     String category;
     String itemAdded;
+    String currentDateString = "";
 
     Button btnEnter;
+    Button btnCalendar;
     EditText item;
+    TextView tvDate;
 
     public ComposeFragment() {
         // Required empty public constructor
@@ -60,6 +54,7 @@ public class ComposeFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
 
         Spinner spinner = view.findViewById(R.id.spinner);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.categories, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -76,24 +71,53 @@ public class ComposeFragment extends Fragment{
         });
 
         item = view.findViewById(R.id.etItemAdded);
+        btnCalendar = view.findViewById(R.id.btnCalendar);
         btnEnter = view.findViewById(R.id.btnSubmit);
+        tvDate = view.findViewById(R.id.tvDate);
 
+        btnCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar c = Calendar.getInstance();
+                int year = c.get(Calendar.YEAR);
+                int month = c.get(Calendar.MONTH);
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), datePickerListener, year, month, day);
+                datePickerDialog.show();
+            }
+        });
 
 
         btnEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 itemAdded = item.getText().toString();
-                Bundle bundle = new Bundle();
-                bundle.putString("item", itemAdded);
-                bundle.putString("category", category);
+                if(itemAdded.isEmpty()){
+                    Toast.makeText(getContext(), "Item cannot be empty", Toast.LENGTH_SHORT).show();
+                }else if(currentDateString.isEmpty()){
+                    Toast.makeText(getContext(), "Must have date", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("item", itemAdded);
+                    bundle.putString("category", category);
 
-                //When Submit button is clicked then Refrigerator Fragment is displayed
-                FragmentManager fragmentManager = getFragmentManager();
-                RefrigeratorFragment fragment = new RefrigeratorFragment();
-                fragment.setArguments(bundle);
-                fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.flContainer, fragment, null).commit();
+                    //When Submit button is clicked then Refrigerator Fragment is displayed
+                    FragmentManager fragmentManager = getFragmentManager();
+                    RefrigeratorFragment fragment = new RefrigeratorFragment();
+                    fragment.setArguments(bundle);
+                    fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.flContainer, fragment, null).commit();
+                    item.setText("");
+                }
             }
         });
     }
+    private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+            currentDateString = (month+1) + "/" + day + "/" + year;
+            Toast.makeText(getContext(), currentDateString, Toast.LENGTH_SHORT).show();
+            tvDate.setText(currentDateString);
+        }
+    };
 }

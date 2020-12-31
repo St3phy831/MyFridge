@@ -46,13 +46,12 @@
         android:id="@+id/btnCalendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="100dp"
+        android:layout_below="@+id/tvExpiration"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="25dp"
         android:layout_toEndOf="@+id/tvExpiration"
-        android:text="Date" />
+        android:text="Date Picker" />
 
     <Button
         android:id="@+id/btnSubmit"
@@ -71,4 +70,16 @@
         android:layout_marginTop="25dp"
         android:hint="Enter an Item..."
         android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="25dp"
+        android:layout_toEndOf="@+id/tvExpiration"
+        android:textColor="#100F0F"
+        android:textSize="20sp"
+        tools:text="12/03/20" />
 </RelativeLayout>
