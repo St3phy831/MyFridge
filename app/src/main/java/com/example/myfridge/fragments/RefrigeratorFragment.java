@@ -91,6 +91,7 @@ public class RefrigeratorFragment extends Fragment {
         Bundle args = getArguments();
         if(args != null){
             String item = args.getString("item");
+            String date = "EXP: " + args.getString("date");
             String category = args.getString("category");
             switch(category){
                 case "Dairy":
@@ -104,7 +105,7 @@ public class RefrigeratorFragment extends Fragment {
                     extras.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
                     //user's input
-                    extras.putString("dateAdded", "EXP: 12/20/20");
+                    extras.putString("dateAdded", date);
                     extras.putStringArrayList("items", (ArrayList<String>) itemsOne);
                     extras.putStringArrayList("dates", (ArrayList<String>) datesOne);
                     intent.putExtras(extras);
@@ -121,7 +122,7 @@ public class RefrigeratorFragment extends Fragment {
                     extrasTwo.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
                     //user's input
-                    extrasTwo.putString("dateAdded", "EXP: 12/20/20");
+                    extrasTwo.putString("dateAdded", date);
                     extrasTwo.putStringArrayList("items", (ArrayList<String>) itemsTwo);
                     extrasTwo.putStringArrayList("dates", (ArrayList<String>) datesTwo);
                     intentTwo.putExtras(extrasTwo);
@@ -139,7 +140,7 @@ public class RefrigeratorFragment extends Fragment {
                     extrasThree.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
                     //user's input
-                    extrasThree.putString("dateAdded", "EXP: 12/20/20");
+                    extrasThree.putString("dateAdded", date);
                     extrasThree.putStringArrayList("items", (ArrayList<String>) itemsThree);
                     extrasThree.putStringArrayList("dates", (ArrayList<String>) datesThree);
                     intentThree.putExtras(extrasThree);
@@ -157,7 +158,7 @@ public class RefrigeratorFragment extends Fragment {
                     extrasFour.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
                     //user's input
-                    extrasFour.putString("dateAdded", "EXP: 12/20/20");
+                    extrasFour.putString("dateAdded", date);
                     extrasFour.putStringArrayList("items", (ArrayList<String>) itemsFour);
                     extrasFour.putStringArrayList("dates", (ArrayList<String>) datesFour);
                     intentFour.putExtras(extrasFour);
@@ -175,7 +176,7 @@ public class RefrigeratorFragment extends Fragment {
                     extrasFive.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
                     //user's input
-                    extrasFive.putString("dateAdded", "EXP: 12/20/20");
+                    extrasFive.putString("dateAdded", date);
                     extrasFive.putStringArrayList("items", (ArrayList<String>) itemsFive);
                     extrasFive.putStringArrayList("dates", (ArrayList<String>) datesFive);
                     intentFive.putExtras(extrasFive);
@@ -194,7 +195,7 @@ public class RefrigeratorFragment extends Fragment {
                     extrasSix.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
                     //user's input
-                    extrasSix.putString("dateAdded", "EXP: 12/20/20");
+                    extrasSix.putString("dateAdded", date);
                     extrasSix.putStringArrayList("items", (ArrayList<String>) itemsSix);
                     extrasSix.putStringArrayList("dates", (ArrayList<String>) datesSix);
                     intentSix.putExtras(extrasSix);

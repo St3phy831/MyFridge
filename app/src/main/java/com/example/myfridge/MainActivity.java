@@ -47,14 +47,13 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new RefrigeratorFragment();
                         Toast.makeText(getApplicationContext(), "Fridge List", Toast.LENGTH_SHORT).show();
                         break;
-
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
         //Set Default selection
-        bottomNavigationView.setSelectedItemId(R.id.action_list);
+        bottomNavigationView.setSelectedItemId(R.id.action_fridge);
 
     }
 }

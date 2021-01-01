@@ -92,6 +92,7 @@ public class ComposeFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 itemAdded = item.getText().toString();
+                //Check is item or date input is empty
                 if(itemAdded.isEmpty()){
                     Toast.makeText(getContext(), "Item cannot be empty", Toast.LENGTH_SHORT).show();
                 }else if(currentDateString.isEmpty()){
@@ -100,6 +101,7 @@ public class ComposeFragment extends Fragment{
                 else {
                     Bundle bundle = new Bundle();
                     bundle.putString("item", itemAdded);
+                    bundle.putString("date", currentDateString);
                     bundle.putString("category", category);
 
                     //When Submit button is clicked then Refrigerator Fragment is displayed
@@ -108,6 +110,7 @@ public class ComposeFragment extends Fragment{
                     fragment.setArguments(bundle);
                     fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.flContainer, fragment, null).commit();
                     item.setText("");
+                    tvDate.setText("");
                 }
             }
         });
@@ -115,7 +118,16 @@ public class ComposeFragment extends Fragment{
     private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-            currentDateString = (month+1) + "/" + day + "/" + year;
+            //This is to format date as: mm/dd/year
+            if(month < 10 && day < 10){
+                currentDateString = "0" + (month+1) + "/" + "0" + day + "/" + year;
+            } else if (month < 10) {
+                currentDateString = "0" + (month+1) + "/" + day + "/" + year;
+            } else if (day < 10) {
+                currentDateString = (month+1) + "/" + "0" + day + "/" + year;
+            }else{
+                currentDateString = (month+1) + "/" + day + "/" + year;
+            }
             Toast.makeText(getContext(), currentDateString, Toast.LENGTH_SHORT).show();
             tvDate.setText(currentDateString);
         }
