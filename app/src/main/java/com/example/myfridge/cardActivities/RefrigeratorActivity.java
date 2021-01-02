@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RefrigeratorActivity extends AppCompatActivity {
-    public static final String TAG = "Refrigerator Activity";
+    public static final String TAG = "RefrigeratorActivity";
 
     TextView tvTitle;
     String title;

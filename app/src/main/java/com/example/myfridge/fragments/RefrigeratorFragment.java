@@ -30,7 +30,6 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class RefrigeratorFragment extends Fragment {
-    public static final String TAG = "Refrigerator Fragment";
 
     CardView cardOne;
     CardView cardTwo;
@@ -90,9 +89,9 @@ public class RefrigeratorFragment extends Fragment {
         //Get Arguments of Compose Fragment and Opens particular Card View based on user's category
         Bundle args = getArguments();
         if(args != null){
-            String item = args.getString("item");
-            String date = "EXP: " + args.getString("date");
-            String category = args.getString("category");
+            String item = args.getString(ComposeFragment.ITEM);
+            String date = "EXP: " + args.getString(ComposeFragment.DATE);
+            String category = args.getString(ComposeFragment.CATEGORY);
             switch(category){
                 case "Dairy":
                     Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);

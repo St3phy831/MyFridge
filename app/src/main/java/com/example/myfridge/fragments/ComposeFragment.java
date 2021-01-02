@@ -27,7 +27,10 @@ import java.util.Calendar;
  * A simple {@link Fragment} subclass.
  */
 public class ComposeFragment extends Fragment{
-    private static final String TAG = "ComposeFragment";
+    public static final String ITEM = "item";
+    public static final String DATE = "date";
+    public static final String CATEGORY = "category";
+
 
     String category;
     String itemAdded;
@@ -100,9 +103,9 @@ public class ComposeFragment extends Fragment{
                 }
                 else {
                     Bundle bundle = new Bundle();
-                    bundle.putString("item", itemAdded);
-                    bundle.putString("date", currentDateString);
-                    bundle.putString("category", category);
+                    bundle.putString(ITEM, itemAdded);
+                    bundle.putString(DATE, currentDateString);
+                    bundle.putString(CATEGORY, category);
 
                     //When Submit button is clicked then Refrigerator Fragment is displayed
                     FragmentManager fragmentManager = getFragmentManager();
@@ -128,7 +131,6 @@ public class ComposeFragment extends Fragment{
             }else{
                 currentDateString = (month+1) + "/" + day + "/" + year;
             }
-            Toast.makeText(getContext(), currentDateString, Toast.LENGTH_SHORT).show();
             tvDate.setText(currentDateString);
         }
     };

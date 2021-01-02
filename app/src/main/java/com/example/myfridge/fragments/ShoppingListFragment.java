@@ -1,5 +1,6 @@
 package com.example.myfridge.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.myfridge.R;
 import com.example.myfridge.adapters.ItemsAdapter;
+import com.example.myfridge.cardActivities.ShoppingListActivity;
 
 import org.apache.commons.io.FileUtils;
 
@@ -31,8 +33,12 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class ShoppingListFragment extends Fragment {
+    public static final String KEY_ITEM_TEXT = "item_text";
+    public static final String KEY_ITEM_POSITION = "item_position";
+    public static final int EDIT_CODE = 20;
+    public static final int RESULT_OK = -1;
 
-    private static final String TAG = "Shopping List";
+    private static final String TAG = "ShoppingList";
     List<String> items;
     Button btnAdd;
     EditText etItem;
@@ -76,7 +82,21 @@ public class ShoppingListFragment extends Fragment {
             }
         };
 
-        itemsAdapter = new ItemsAdapter(items, longClickListener);
+        ItemsAdapter.OnClickListener onClickListener = new ItemsAdapter.OnClickListener() {
+            @Override
+            public void onItemClicked(int position) {
+                //Create activity
+                Intent i = new Intent(getActivity(), ShoppingListActivity.class);
+                //pass the data
+                i.putExtra(KEY_ITEM_TEXT, items.get(position));
+                i.putExtra(KEY_ITEM_POSITION, position);
+                //display activity
+                startActivityForResult(i, EDIT_CODE);
+                Log.d(TAG, "Single click at position" + position);
+            }
+        };
+
+        itemsAdapter = new ItemsAdapter(items, longClickListener, onClickListener);
         rvItems.setAdapter(itemsAdapter);
         rvItems.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -96,6 +116,27 @@ public class ShoppingListFragment extends Fragment {
             }
         });
     }
+
+    //handle data of result
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(resultCode == RESULT_OK && requestCode == EDIT_CODE){
+            //retrieve updated text value
+            String itemText = data.getStringExtra(KEY_ITEM_TEXT);
+            //extract original position of edited item from position key
+            int position = data.getExtras().getInt(KEY_ITEM_POSITION);
+            //update model with new item
+            items.set(position, itemText);
+            //notify adapter
+            itemsAdapter.notifyItemChanged(position);
+            //persists
+            saveItems();
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }else{
+            Log.w(TAG, "Unknown call to ShoppingListActivity");
+        }
+    }
+
     private File getDataFile(){
         return new File(getActivity().getCacheDir(), "data.txt");
     }
