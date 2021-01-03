@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ComposeFragment">
 
+    <TextView
+        android:id="@+id/tvFridgeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="false"
+        android:layout_marginStart="130dp"
+        android:layout_marginEnd="0dp"
+        android:text="Add Item"
+        android:textColor="#673AB7"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvCategory"
@@ -13,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/etItemAdded"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
         android:text="Category:"
         android:textColor="#0C0C0C"
@@ -36,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvCategory"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
         android:text="Expiration Date:"
         android:textColor="#0C0C0C"
@@ -48,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvExpiration"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
         android:layout_toEndOf="@+id/tvExpiration"
         android:text="Date Picker" />
@@ -64,10 +76,12 @@
     <EditText
         android:id="@+id/etItemAdded"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
+        android:layout_below="@+id/tvFridgeTitle"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="10dp"
         android:hint="Enter an Item..."
         android:inputType="textPersonName" />
 

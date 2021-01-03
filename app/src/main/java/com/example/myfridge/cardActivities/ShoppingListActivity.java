@@ -24,6 +24,7 @@ public class ShoppingListActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
 
         getSupportActionBar().setTitle("Edit Item");
+
         etItem.setText(getIntent().getStringExtra(ShoppingListFragment.KEY_ITEM_TEXT));
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override

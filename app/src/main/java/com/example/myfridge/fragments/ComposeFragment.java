@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myfridge.R;
+
 import java.util.Calendar;
 
 /**
@@ -30,7 +32,6 @@ public class ComposeFragment extends Fragment{
     public static final String ITEM = "item";
     public static final String DATE = "date";
     public static final String CATEGORY = "category";
-
 
     String category;
     String itemAdded;
@@ -122,9 +123,11 @@ public class ComposeFragment extends Fragment{
         @Override
         public void onDateSet(DatePicker datePicker, int year, int month, int day) {
             //This is to format date as: mm/dd/year
-            if(month < 10 && day < 10){
+            year = year%100;
+            //month is 9 because October is in index 9
+            if(month < 9 && day < 10){
                 currentDateString = "0" + (month+1) + "/" + "0" + day + "/" + year;
-            } else if (month < 10) {
+            } else if (month < 9) {
                 currentDateString = "0" + (month+1) + "/" + day + "/" + year;
             } else if (day < 10) {
                 currentDateString = (month+1) + "/" + "0" + day + "/" + year;

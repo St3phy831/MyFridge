@@ -36,16 +36,16 @@ public class MainActivity extends AppCompatActivity {
                 switch(menuItem.getItemId()){
                     case R.id.action_list:
                         fragment = new ShoppingListFragment();
-                        Toast.makeText(getApplicationContext(), "ToBuy List", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Shopping List", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_add:
                         fragment = new ComposeFragment();
-                        Toast.makeText(getApplicationContext(), "Add to List", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Add to Fridge", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_fridge:
                     default:
                         fragment = new RefrigeratorFragment();
-                        Toast.makeText(getApplicationContext(), "Fridge List", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Fridge", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
