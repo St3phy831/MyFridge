@@ -13,8 +13,9 @@ My main goal is to learn more about Android Development!
 
 
 #### App Features:
-- [x] Bottom Navigation between three Fragments (ToBuy List, card view of Refrigerator items, and Compose Fragment)
+- [x] Bottom Navigation between three Fragments (Shopping List fragment, card view of Refrigerator items, and Compose Fragment)
 - [x] A Simple List to add items the user would like to buy
+- [x] User is able to click on and update items they would like to buy
 - [x] A card view of the different categories of food products in a refrigerator
 - [x] Allow the users to add refrigerator items and their expiration date 
 - [x] Allow user to view items added through the card view in their refrigerator
