@@ -8,21 +8,14 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.myfridge.R;
-import com.example.myfridge.adapters.FridgeItemsAdapter;
 import com.example.myfridge.cardActivities.RefrigeratorActivity;
 
-import org.apache.commons.io.FileUtils;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,7 +91,7 @@ public class RefrigeratorFragment extends Fragment {
                     //Send data of this activity through bundle
                     Bundle extras = new Bundle();
                     extras.putString("type", "dairy");
-                    extras.putString("color", "#4287f5");
+                    extras.putString("color", "#6990fa");
                     extras.putString("title", "Dairy List");
                     extras.putString("added", "true");
                     extras.putString("itemAdded", item);
@@ -168,7 +161,7 @@ public class RefrigeratorFragment extends Fragment {
                     Intent intentFive = new Intent(getActivity(), RefrigeratorActivity.class);
                     //Send data of this activity through bundle
                     Bundle extrasFive = new Bundle();
-                    extrasFive.putString("color", "#fa6964");
+                    extrasFive.putString("color", "#f55f69");
                     extrasFive.putString("title", "Meat List");
                     extrasFive.putString("type", "meat");
                     extrasFive.putString("added", "true");
@@ -212,7 +205,7 @@ public class RefrigeratorFragment extends Fragment {
                 //Send data of this activity through bundle
                 Bundle extras = new Bundle();
                 extras.putString("type", "dairy");
-                extras.putString("color", "#4287f5");
+                extras.putString("color", "#6990fa");
                 extras.putString("title", "Dairy List");
                 extras.putString("added", "false");
                 extras.putString("itemAdded", "null");
@@ -283,7 +276,7 @@ public class RefrigeratorFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
                 Bundle extras = new Bundle();
-                extras.putString("color", "#fa6964");
+                extras.putString("color", "#f55f69");
                 extras.putString("title", "Meat List");
                 extras.putString("type", "meat");
                 extras.putString("added", "false");
