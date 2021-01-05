@@ -21,13 +21,20 @@ My main goal is to learn more about Android Development!
 - [x] Allow user to view items added through the card view in their refrigerator
 
 
-#### GIFS (*Will be Added*):
+## GIFS:
+#### Shopping List Fragment
+  <img src="shoppingList.gif" title="Shopping List Walkthrough" width="250px"/>
+  
+#### Refrigerator Fragment
+  <img src="refrigerator.gif" title="Shopping List Walkthrough" width="250px"/>
+  
+#### Compose Fragment
+  <img src="compose.gif" title="Shopping List Walkthrough" width="250px"/>
 
-
-#### Features I would like to add:
+### Features I would like to add:
 - Add a notification for when item is expired
 
 
-#### Challenges:
+### Challenges:
 - I was stuck on how to pass the item added by the user to the Refrigerator Fragment to be able to add and save data to be displayed,
 so I used a bundle to pass the data and open the Activity so the user could se that their item was added.
