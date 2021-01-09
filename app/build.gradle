@@ -35,5 +35,7 @@ dependencies {
     implementation "com.google.android.material:material:${designSupportVersion}"
     implementation "commons-io:commons-io:2.6"
     implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'com.github.jakebonk:NotifyMe:1.0.0'
+    implementation 'com.wdullaer:materialdatetimepicker:3.6.0'
 
 }

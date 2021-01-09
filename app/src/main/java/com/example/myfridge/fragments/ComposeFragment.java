@@ -1,11 +1,11 @@
 package com.example.myfridge.fragments;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.allyants.notifyme.NotifyMe;
 import com.example.myfridge.R;
 
 import java.util.Calendar;
@@ -29,6 +30,7 @@ import java.util.Calendar;
  * A simple {@link Fragment} subclass.
  */
 public class ComposeFragment extends Fragment{
+    public static final String TAG = "ComposeFragment";
     public static final String ITEM = "item";
     public static final String DATE = "date";
     public static final String CATEGORY = "category";
@@ -41,6 +43,8 @@ public class ComposeFragment extends Fragment{
     Button btnCalendar;
     EditText item;
     TextView tvDate;
+
+    final Calendar c = Calendar.getInstance();
 
     public ComposeFragment() {
         // Required empty public constructor
@@ -56,7 +60,6 @@ public class ComposeFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         Spinner spinner = view.findViewById(R.id.spinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.categories, android.R.layout.simple_spinner_item);
@@ -82,7 +85,6 @@ public class ComposeFragment extends Fragment{
         btnCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Calendar c = Calendar.getInstance();
                 int year = c.get(Calendar.YEAR);
                 int month = c.get(Calendar.MONTH);
                 int day = c.get(Calendar.DAY_OF_MONTH);
@@ -115,13 +117,37 @@ public class ComposeFragment extends Fragment{
                     fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.flContainer, fragment, null).commit();
                     item.setText("");
                     tvDate.setText("");
+                    scheduleNotification();
                 }
             }
         });
     }
+
+    //Initializes notification
+    private void scheduleNotification() {
+        NotifyMe notifyMe = new NotifyMe.Builder(getContext())
+                .title("MyFridge")
+                .content( "Your " + itemAdded + " will EXPIRE today!")
+                .color(105, 22, 247, 0)
+                .led_color(255, 255, 255, 255)
+                .time(c)
+                .addAction(new Intent(String.valueOf(getActivity())), "Done")
+                .large_icon(R.mipmap.ic_launcher_round)
+                .build();
+    }
+
     private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+            //Sets calendar instance to particular date & time for notification
+            c.set(Calendar.YEAR, year);
+            c.set(Calendar.MONTH, month);
+            c.set(Calendar.DAY_OF_MONTH, day);
+            //I'm setting it to notify individuals @ 8 A.M. of the expiration date
+            //but time can be changed to test results
+            c.set(Calendar.HOUR_OF_DAY, 8);
+            c.set(Calendar.MINUTE, 0);
+            c.set(Calendar.SECOND, 0);
             //This is to format date as: mm/dd/year
             year = year%100;
             //month is 9 because October is in index 9
