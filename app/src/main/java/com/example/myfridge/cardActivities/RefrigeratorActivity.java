@@ -72,50 +72,52 @@ public class RefrigeratorActivity extends AppCompatActivity {
             }
         };
 
-        //This saves the items added
-        if(added.equals("true")){
-            items.add(itemAdded);
-            dates.add(dateAdded);
-            Toast.makeText(getApplicationContext(), "Item was added", Toast.LENGTH_SHORT).show();
-            saveItems();
-        }
-
         rvFridgeList = findViewById(R.id.rvFridgeItems);
         fridgeItemsAdapter = new FridgeItemsAdapter(items, dates, longClick);
         rvFridgeList.setAdapter(fridgeItemsAdapter);
         rvFridgeList.setLayoutManager(new LinearLayoutManager(this));
+
+        //This saves the items added
+        if(added.equals("true")){
+            items.add(itemAdded);
+            dates.add(dateAdded);
+            //notify adapter
+            fridgeItemsAdapter.notifyItemInserted(items.size()-1);
+            Toast.makeText(getApplicationContext(), "Item was added", Toast.LENGTH_SHORT).show();
+            saveItems();
+        }
     }
     //Checks which card view to save and load for appropriate date and item list.
     private File getDataFileForItem(String type){
         switch(type){
-            case "dairy":
+            case "Dairy":
                 return new File(getFilesDir(), "dairyItems.txt");
-            case "veggie":
+            case "Veggie":
                 return new File(getFilesDir(), "veggieItems.txt");
-            case "fruit":
+            case "Fruit":
                 return new File(getFilesDir(), "fruitItems.txt");
-            case "juice":
-                return new File(getFilesDir(), "juiceItems.txt");
-            case "meat":
+            case "Drink":
+                return new File(getFilesDir(), "drinkItems.txt");
+            case "Meat":
                 return new File(getFilesDir(), "meatItems.txt");
-            case "other":
+            case "Other":
             default:
                 return new File(getFilesDir(), "otherItems.txt");
         }
     }
     private File getDataFileForDate(String type){
         switch(type){
-            case "dairy":
+            case "Dairy":
                 return new File(getFilesDir(), "dairyDate.txt");
-            case "veggie":
+            case "Veggie":
                 return new File(getFilesDir(), "veggieDate.txt");
-            case "fruit":
+            case "Fruit":
                 return new File(getFilesDir(), "fruitDate.txt");
-            case "juice":
-                return new File(getFilesDir(), "juiceDate.txt");
-            case "meat":
+            case "Drink":
+                return new File(getFilesDir(), "drinkDate.txt");
+            case "Meat":
                 return new File(getFilesDir(), "meatDate.txt");
-            case "other":
+            case "Other":
             default:
                 return new File(getFilesDir(), "otherDate.txt");
         }

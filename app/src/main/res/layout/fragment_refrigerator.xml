@@ -174,7 +174,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="JUICES"
+                    android:text="DRINKS"
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>

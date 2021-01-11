@@ -23,6 +23,13 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class RefrigeratorFragment extends Fragment {
+    public static final String CATEGORY_ONE = "Dairy";
+    public static final String CATEGORY_TWO = "Veggie";
+    public static final String CATEGORY_THREE = "Fruit";
+    public static final String CATEGORY_FOUR = "Drink";
+    public static final String CATEGORY_FIVE = "Meat";
+    public static final String CATEGORY_SIX = "Other";
+
 
     CardView cardOne;
     CardView cardTwo;
@@ -86,13 +93,13 @@ public class RefrigeratorFragment extends Fragment {
             String date = "EXP: " + args.getString(ComposeFragment.DATE);
             String category = args.getString(ComposeFragment.CATEGORY);
             switch(category){
-                case "Dairy":
+                case CATEGORY_ONE:
                     Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
                     //Send data of this activity through bundle
                     Bundle extras = new Bundle();
-                    extras.putString("type", "dairy");
+                    extras.putString("type", CATEGORY_ONE);
                     extras.putString("color", "#6990fa");
-                    extras.putString("title", "Dairy List");
+                    extras.putString("title", CATEGORY_ONE + " List");
                     extras.putString("added", "true");
                     extras.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
@@ -102,14 +109,13 @@ public class RefrigeratorFragment extends Fragment {
                     extras.putStringArrayList("dates", (ArrayList<String>) datesOne);
                     intent.putExtras(extras);
                     startActivity(intent);
-                    Toast.makeText(getContext(), "Dairy Activity", Toast.LENGTH_SHORT).show();
                     break;
-                case "Veggie":
+                case CATEGORY_TWO:
                     Intent intentTwo = new Intent(getActivity(), RefrigeratorActivity.class);
                     Bundle extrasTwo = new Bundle();
-                    extrasTwo.putString("type", "veggie");
-                    extrasTwo.putString("color", "#78de95");
-                    extrasTwo.putString("title", "Veggie List");
+                    extrasTwo.putString("type", CATEGORY_TWO);
+                    extrasTwo.putString("color", "#55cf87");
+                    extrasTwo.putString("title", CATEGORY_TWO + " List");
                     extrasTwo.putString("added", "true");
                     extrasTwo.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
@@ -119,15 +125,14 @@ public class RefrigeratorFragment extends Fragment {
                     extrasTwo.putStringArrayList("dates", (ArrayList<String>) datesTwo);
                     intentTwo.putExtras(extrasTwo);
                     startActivity(intentTwo);
-                    Toast.makeText(getContext(), "Veggie Activity", Toast.LENGTH_SHORT).show();
                     break;
-                case "Fruit":
+                case CATEGORY_THREE:
                     Intent intentThree = new Intent(getActivity(), RefrigeratorActivity.class);
                     //Send data of this activity through bundle
                     Bundle extrasThree = new Bundle();
-                    extrasThree.putString("color", "#f384f5");
-                    extrasThree.putString("title", "Fruit List");
-                    extrasThree.putString("type", "fruit");
+                    extrasThree.putString("color", "#ed5cd0");
+                    extrasThree.putString("title", CATEGORY_THREE + " List");
+                    extrasThree.putString("type", CATEGORY_THREE);
                     extrasThree.putString("added", "true");
                     extrasThree.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
@@ -137,15 +142,14 @@ public class RefrigeratorFragment extends Fragment {
                     extrasThree.putStringArrayList("dates", (ArrayList<String>) datesThree);
                     intentThree.putExtras(extrasThree);
                     startActivity(intentThree);
-                    Toast.makeText(getContext(), "Veggie Activity", Toast.LENGTH_SHORT).show();
                     break;
-                case "Juice":
+                case CATEGORY_FOUR:
                     Intent intentFour = new Intent(getActivity(), RefrigeratorActivity.class);
                     //Send data of this activity through bundle
                     Bundle extrasFour = new Bundle();
-                    extrasFour.putString("color", "#f7ab40");
-                    extrasFour.putString("type", "juice");
-                    extrasFour.putString("title", "Juice List");
+                    extrasFour.putString("color", "#56d1c1");
+                    extrasFour.putString("type", CATEGORY_FOUR);
+                    extrasFour.putString("title", CATEGORY_FOUR + "s List");
                     extrasFour.putString("added", "true");
                     extrasFour.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
@@ -155,15 +159,14 @@ public class RefrigeratorFragment extends Fragment {
                     extrasFour.putStringArrayList("dates", (ArrayList<String>) datesFour);
                     intentFour.putExtras(extrasFour);
                     startActivity(intentFour);
-                    Toast.makeText(getContext(), "Veggie Activity", Toast.LENGTH_SHORT).show();
                     break;
-                case "Meat":
+                case CATEGORY_FIVE:
                     Intent intentFive = new Intent(getActivity(), RefrigeratorActivity.class);
                     //Send data of this activity through bundle
                     Bundle extrasFive = new Bundle();
-                    extrasFive.putString("color", "#f55f69");
-                    extrasFive.putString("title", "Meat List");
-                    extrasFive.putString("type", "meat");
+                    extrasFive.putString("color", "#ed5c70");
+                    extrasFive.putString("title", CATEGORY_FIVE + " List");
+                    extrasFive.putString("type", CATEGORY_FIVE);
                     extrasFive.putString("added", "true");
                     extrasFive.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
@@ -173,16 +176,15 @@ public class RefrigeratorFragment extends Fragment {
                     extrasFive.putStringArrayList("dates", (ArrayList<String>) datesFive);
                     intentFive.putExtras(extrasFive);
                     startActivity(intentFive);
-                    Toast.makeText(getContext(), "Veggie Activity", Toast.LENGTH_SHORT).show();
                     break;
-                case "Other":
+                case CATEGORY_SIX:
                 default:
                     Intent intentSix = new Intent(getActivity(), RefrigeratorActivity.class);
                     //Send data of this activity through bundle
                     Bundle extrasSix = new Bundle();
-                    extrasSix.putString("color", "#b696fa");
-                    extrasSix.putString("title", "Other List");
-                    extrasSix.putString("type", "other");
+                    extrasSix.putString("color", "#b681fc");
+                    extrasSix.putString("title", CATEGORY_SIX + " List");
+                    extrasSix.putString("type", CATEGORY_SIX);
                     extrasSix.putString("added", "true");
                     extrasSix.putString("itemAdded", item);
                     //For now, it will have this value as Expiration date until I can implement
@@ -192,7 +194,6 @@ public class RefrigeratorFragment extends Fragment {
                     extrasSix.putStringArrayList("dates", (ArrayList<String>) datesSix);
                     intentSix.putExtras(extrasSix);
                     startActivity(intentSix);
-                    Toast.makeText(getContext(), "Veggie Activity", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -204,9 +205,9 @@ public class RefrigeratorFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
                 //Send data of this activity through bundle
                 Bundle extras = new Bundle();
-                extras.putString("type", "dairy");
+                extras.putString("type", CATEGORY_ONE);
                 extras.putString("color", "#6990fa");
-                extras.putString("title", "Dairy List");
+                extras.putString("title", CATEGORY_ONE + " List");
                 extras.putString("added", "false");
                 extras.putString("itemAdded", "null");
                 extras.putString("dateAdded", "null");
@@ -214,7 +215,6 @@ public class RefrigeratorFragment extends Fragment {
                 extras.putStringArrayList("dates", (ArrayList<String>) datesOne);
                 intent.putExtras(extras);
                 startActivity(intent);
-                Toast.makeText(getContext(), "Dairy Activity", Toast.LENGTH_SHORT).show();
             }
         });
         cardTwo.setOnClickListener(new View.OnClickListener() {
@@ -222,9 +222,9 @@ public class RefrigeratorFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
                 Bundle extras = new Bundle();
-                extras.putString("color", "#78de95");
-                extras.putString("type", "veggie");
-                extras.putString("title", "Veggie List");
+                extras.putString("color", "#55cf87");
+                extras.putString("type", CATEGORY_TWO);
+                extras.putString("title", CATEGORY_TWO + " List");
                 extras.putString("added", "false");
                 extras.putString("itemAdded", "null");
                 extras.putString("dateAdded", "null");
@@ -232,7 +232,6 @@ public class RefrigeratorFragment extends Fragment {
                 extras.putStringArrayList("dates", (ArrayList<String>) datesTwo);
                 intent.putExtras(extras);
                 startActivity(intent);
-                Toast.makeText(getContext(), "Veggie Activity", Toast.LENGTH_SHORT).show();
             }
         });
         cardThree.setOnClickListener(new View.OnClickListener() {
@@ -240,9 +239,9 @@ public class RefrigeratorFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
                 Bundle extras = new Bundle();
-                extras.putString("color", "#f384f5");
-                extras.putString("title", "Fruit List");
-                extras.putString("type", "fruit");
+                extras.putString("color", "#ed5cd0");
+                extras.putString("title", CATEGORY_THREE + " List");
+                extras.putString("type", CATEGORY_THREE);
                 extras.putString("added", "false");
                 extras.putString("itemAdded", "null");
                 extras.putString("dateAdded", "null");
@@ -250,7 +249,6 @@ public class RefrigeratorFragment extends Fragment {
                 extras.putStringArrayList("dates", (ArrayList<String>) datesThree);
                 intent.putExtras(extras);
                 startActivity(intent);
-                Toast.makeText(getContext(), "Fruit Activity", Toast.LENGTH_SHORT).show();
             }
         });
         cardFour.setOnClickListener(new View.OnClickListener() {
@@ -258,9 +256,9 @@ public class RefrigeratorFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
                 Bundle extras = new Bundle();
-                extras.putString("color", "#f7ab40");
-                extras.putString("type", "juice");
-                extras.putString("title", "Juice List");
+                extras.putString("color", "#56d1c1");
+                extras.putString("type", CATEGORY_FOUR);
+                extras.putString("title", CATEGORY_FOUR + "s List");
                 extras.putString("added", "false");
                 extras.putString("itemAdded", "null");
                 extras.putString("dateAdded", "null");
@@ -268,7 +266,6 @@ public class RefrigeratorFragment extends Fragment {
                 extras.putStringArrayList("dates", (ArrayList<String>) datesFour);
                 intent.putExtras(extras);
                 startActivity(intent);
-                Toast.makeText(getContext(), "Juices Activity", Toast.LENGTH_SHORT).show();
             }
         });
         cardFive.setOnClickListener(new View.OnClickListener() {
@@ -276,9 +273,9 @@ public class RefrigeratorFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
                 Bundle extras = new Bundle();
-                extras.putString("color", "#f55f69");
-                extras.putString("title", "Meat List");
-                extras.putString("type", "meat");
+                extras.putString("color", "#ed5c70");
+                extras.putString("title", CATEGORY_FIVE + " List");
+                extras.putString("type", CATEGORY_FIVE);
                 extras.putString("added", "false");
                 extras.putString("itemAdded", "null");
                 extras.putString("dateAdded", "null");
@@ -286,7 +283,6 @@ public class RefrigeratorFragment extends Fragment {
                 extras.putStringArrayList("dates", (ArrayList<String>) datesFive);
                 intent.putExtras(extras);
                 startActivity(intent);
-                Toast.makeText(getContext(), "Meat Activity", Toast.LENGTH_SHORT).show();
             }
         });
         cardSix.setOnClickListener(new View.OnClickListener() {
@@ -294,9 +290,9 @@ public class RefrigeratorFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
                 Bundle extras = new Bundle();
-                extras.putString("color", "#b696fa");
-                extras.putString("title", "Other List");
-                extras.putString("type", "other");
+                extras.putString("color", "#b681fc");
+                extras.putString("title", CATEGORY_SIX + " List");
+                extras.putString("type", CATEGORY_SIX);
                 extras.putString("added", "false");
                 extras.putString("itemAdded", "null");
                 extras.putString("dateAdded", "null");
@@ -304,7 +300,6 @@ public class RefrigeratorFragment extends Fragment {
                 extras.putStringArrayList("dates", (ArrayList<String>) datesSix);
                 intent.putExtras(extras);
                 startActivity(intent);
-                Toast.makeText(getContext(), "Other Activity", Toast.LENGTH_SHORT).show();
             }
         });
     }

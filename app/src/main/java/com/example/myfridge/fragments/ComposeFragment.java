@@ -30,7 +30,6 @@ import java.util.Calendar;
  * A simple {@link Fragment} subclass.
  */
 public class ComposeFragment extends Fragment{
-    public static final String TAG = "ComposeFragment";
     public static final String ITEM = "item";
     public static final String DATE = "date";
     public static final String CATEGORY = "category";
