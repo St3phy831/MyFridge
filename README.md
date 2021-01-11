@@ -1,5 +1,5 @@
 # MyFridge
-App Description: An app that helps keep track of items in refrigerator and helps prevent wasting food.
+App Description: An app that helps keep track of items in refrigerator (or any household food products) in order to prevent wasting food.
 
 Message: Since I was a part of CodePath's Android University, I decided to create this app to practice what I learned and to learn new Android Development concepts. I appreciate any help or advice on how to make this application/code work better!
 
@@ -22,10 +22,10 @@ Message: Since I was a part of CodePath's Android University, I decided to creat
   <img src="shoppingList.gif" title="Shopping List Walkthrough" width="250px"/>
   
 #### Refrigerator Fragment
-  <img src="refrigerator.gif" title="Shopping List Walkthrough" width="250px"/>
+  <img src="refrigerator.gif" title="Refrigerator Walkthrough" width="250px"/>
   
 #### Compose Fragment
-  <img src="compose.gif" title="Shopping List Walkthrough" width="250px"/>
+  <img src="compose.gif" title="Compose Walkthrough" width="250px"/>
 
 #### Notification
   <img src="notification.gif" title="Notification Example" width="250px"/>
