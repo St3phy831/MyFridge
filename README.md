@@ -35,4 +35,7 @@ Message: Since I was a part of CodePath's Android University, I decided to creat
 - I was stuck on how to pass the item added by the user to the Refrigerator Fragment to be able to add and save data to be displayed,
 so I used a bundle to pass the data and open the Activity so the user could se that their item was added.
 
+- Another challenge I had was reusing my Refrigerator Activity, so I had to send a bundle from the Refrigerator Fragment with a keyword
+of its designated category. This allowed me to save the items and expiration dates of a particular category in their specified text files.
+
 - I was also stuck on creating a notification at a specific date. I watched various videos and read Android Documentation to understand how notifications work. I tested it out in my project in a variety of different ways. Eventually, I came upon a video that facilitated the whole process using someone's created library. (Resource: https://www.youtube.com/watch?v=oLngUva-Ves&t=187s)
