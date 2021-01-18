@@ -23,12 +23,24 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class RefrigeratorFragment extends Fragment {
+    //These Public Strings are referenced outside of class
     public static final String CATEGORY_ONE = "Dairy";
     public static final String CATEGORY_TWO = "Veggie";
     public static final String CATEGORY_THREE = "Fruit";
     public static final String CATEGORY_FOUR = "Drink";
     public static final String CATEGORY_FIVE = "Meat";
     public static final String CATEGORY_SIX = "Other";
+
+    public static final String TYPE = "type";
+    public static final String COLOR = "color";
+    public static final String TITLE = "title";
+    public static final String ADDED = "added";
+    public static final String ITEM_ADDED = "itemAdded";
+    public static final String DATE_ADDED = "dateAdded";
+    public static final String ITEMS = "items";
+    public static final String DATES = "dates";
+
+    public static final Boolean WAS_ADDED = true;
 
 
     CardView cardOne;
@@ -38,6 +50,16 @@ public class RefrigeratorFragment extends Fragment {
     CardView cardFive;
     CardView cardSix;
 
+
+    String dairyColor = "#6990fa";
+    String veggieColor = "#55cf87";
+    String fruitColor = "#ed5cd0";
+    String drinkColor = "#56d1c1";
+    String meatColor = "#ed5c70";
+    String otherColor = "#b681fc";
+
+    Boolean notAdded = false;
+    String noItemOrDate = "null";
 
     //Each item and date List corresponds to a category
     List<String> itemsOne = new ArrayList<>();
@@ -94,106 +116,23 @@ public class RefrigeratorFragment extends Fragment {
             String category = args.getString(ComposeFragment.CATEGORY);
             switch(category){
                 case CATEGORY_ONE:
-                    Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
-                    //Send data of this activity through bundle
-                    Bundle extras = new Bundle();
-                    extras.putString("type", CATEGORY_ONE);
-                    extras.putString("color", "#6990fa");
-                    extras.putString("title", CATEGORY_ONE + " List");
-                    extras.putString("added", "true");
-                    extras.putString("itemAdded", item);
-                    //For now, it will have this value as Expiration date until I can implement
-                    //user's input
-                    extras.putString("dateAdded", date);
-                    extras.putStringArrayList("items", (ArrayList<String>) itemsOne);
-                    extras.putStringArrayList("dates", (ArrayList<String>) datesOne);
-                    intent.putExtras(extras);
-                    startActivity(intent);
+                    goToActivity(CATEGORY_ONE, dairyColor, WAS_ADDED, item, date, itemsOne, datesOne);
                     break;
                 case CATEGORY_TWO:
-                    Intent intentTwo = new Intent(getActivity(), RefrigeratorActivity.class);
-                    Bundle extrasTwo = new Bundle();
-                    extrasTwo.putString("type", CATEGORY_TWO);
-                    extrasTwo.putString("color", "#55cf87");
-                    extrasTwo.putString("title", CATEGORY_TWO + " List");
-                    extrasTwo.putString("added", "true");
-                    extrasTwo.putString("itemAdded", item);
-                    //For now, it will have this value as Expiration date until I can implement
-                    //user's input
-                    extrasTwo.putString("dateAdded", date);
-                    extrasTwo.putStringArrayList("items", (ArrayList<String>) itemsTwo);
-                    extrasTwo.putStringArrayList("dates", (ArrayList<String>) datesTwo);
-                    intentTwo.putExtras(extrasTwo);
-                    startActivity(intentTwo);
+                    goToActivity(CATEGORY_TWO, veggieColor, WAS_ADDED, item, date, itemsTwo, datesTwo);
                     break;
                 case CATEGORY_THREE:
-                    Intent intentThree = new Intent(getActivity(), RefrigeratorActivity.class);
-                    //Send data of this activity through bundle
-                    Bundle extrasThree = new Bundle();
-                    extrasThree.putString("color", "#ed5cd0");
-                    extrasThree.putString("title", CATEGORY_THREE + " List");
-                    extrasThree.putString("type", CATEGORY_THREE);
-                    extrasThree.putString("added", "true");
-                    extrasThree.putString("itemAdded", item);
-                    //For now, it will have this value as Expiration date until I can implement
-                    //user's input
-                    extrasThree.putString("dateAdded", date);
-                    extrasThree.putStringArrayList("items", (ArrayList<String>) itemsThree);
-                    extrasThree.putStringArrayList("dates", (ArrayList<String>) datesThree);
-                    intentThree.putExtras(extrasThree);
-                    startActivity(intentThree);
+                    goToActivity(CATEGORY_THREE, fruitColor, WAS_ADDED, item, date, itemsThree, datesThree);
                     break;
                 case CATEGORY_FOUR:
-                    Intent intentFour = new Intent(getActivity(), RefrigeratorActivity.class);
-                    //Send data of this activity through bundle
-                    Bundle extrasFour = new Bundle();
-                    extrasFour.putString("color", "#56d1c1");
-                    extrasFour.putString("type", CATEGORY_FOUR);
-                    extrasFour.putString("title", CATEGORY_FOUR + "s List");
-                    extrasFour.putString("added", "true");
-                    extrasFour.putString("itemAdded", item);
-                    //For now, it will have this value as Expiration date until I can implement
-                    //user's input
-                    extrasFour.putString("dateAdded", date);
-                    extrasFour.putStringArrayList("items", (ArrayList<String>) itemsFour);
-                    extrasFour.putStringArrayList("dates", (ArrayList<String>) datesFour);
-                    intentFour.putExtras(extrasFour);
-                    startActivity(intentFour);
+                    goToActivity(CATEGORY_FOUR, drinkColor, WAS_ADDED, item, date, itemsFour, datesFour);
                     break;
                 case CATEGORY_FIVE:
-                    Intent intentFive = new Intent(getActivity(), RefrigeratorActivity.class);
-                    //Send data of this activity through bundle
-                    Bundle extrasFive = new Bundle();
-                    extrasFive.putString("color", "#ed5c70");
-                    extrasFive.putString("title", CATEGORY_FIVE + " List");
-                    extrasFive.putString("type", CATEGORY_FIVE);
-                    extrasFive.putString("added", "true");
-                    extrasFive.putString("itemAdded", item);
-                    //For now, it will have this value as Expiration date until I can implement
-                    //user's input
-                    extrasFive.putString("dateAdded", date);
-                    extrasFive.putStringArrayList("items", (ArrayList<String>) itemsFive);
-                    extrasFive.putStringArrayList("dates", (ArrayList<String>) datesFive);
-                    intentFive.putExtras(extrasFive);
-                    startActivity(intentFive);
+                    goToActivity(CATEGORY_FIVE, meatColor, WAS_ADDED, item, date, itemsFive, datesFive);
                     break;
                 case CATEGORY_SIX:
                 default:
-                    Intent intentSix = new Intent(getActivity(), RefrigeratorActivity.class);
-                    //Send data of this activity through bundle
-                    Bundle extrasSix = new Bundle();
-                    extrasSix.putString("color", "#b681fc");
-                    extrasSix.putString("title", CATEGORY_SIX + " List");
-                    extrasSix.putString("type", CATEGORY_SIX);
-                    extrasSix.putString("added", "true");
-                    extrasSix.putString("itemAdded", item);
-                    //For now, it will have this value as Expiration date until I can implement
-                    //user's input
-                    extrasSix.putString("dateAdded", date);
-                    extrasSix.putStringArrayList("items", (ArrayList<String>) itemsSix);
-                    extrasSix.putStringArrayList("dates", (ArrayList<String>) datesSix);
-                    intentSix.putExtras(extrasSix);
-                    startActivity(intentSix);
+                    goToActivity(CATEGORY_SIX, otherColor, WAS_ADDED, item, date, itemsSix, datesSix);
             }
         }
 
@@ -201,106 +140,54 @@ public class RefrigeratorFragment extends Fragment {
         cardOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Opens Refrigerator Activity
-                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
-                //Send data of this activity through bundle
-                Bundle extras = new Bundle();
-                extras.putString("type", CATEGORY_ONE);
-                extras.putString("color", "#6990fa");
-                extras.putString("title", CATEGORY_ONE + " List");
-                extras.putString("added", "false");
-                extras.putString("itemAdded", "null");
-                extras.putString("dateAdded", "null");
-                extras.putStringArrayList("items", (ArrayList<String>) itemsOne);
-                extras.putStringArrayList("dates", (ArrayList<String>) datesOne);
-                intent.putExtras(extras);
-                startActivity(intent);
+                goToActivity(CATEGORY_ONE, dairyColor, notAdded, noItemOrDate, noItemOrDate, itemsOne, datesOne);
             }
         });
         cardTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
-                Bundle extras = new Bundle();
-                extras.putString("color", "#55cf87");
-                extras.putString("type", CATEGORY_TWO);
-                extras.putString("title", CATEGORY_TWO + " List");
-                extras.putString("added", "false");
-                extras.putString("itemAdded", "null");
-                extras.putString("dateAdded", "null");
-                extras.putStringArrayList("items", (ArrayList<String>) itemsTwo);
-                extras.putStringArrayList("dates", (ArrayList<String>) datesTwo);
-                intent.putExtras(extras);
-                startActivity(intent);
+                goToActivity(CATEGORY_TWO, veggieColor, notAdded, noItemOrDate, noItemOrDate, itemsTwo, datesTwo);
             }
         });
         cardThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
-                Bundle extras = new Bundle();
-                extras.putString("color", "#ed5cd0");
-                extras.putString("title", CATEGORY_THREE + " List");
-                extras.putString("type", CATEGORY_THREE);
-                extras.putString("added", "false");
-                extras.putString("itemAdded", "null");
-                extras.putString("dateAdded", "null");
-                extras.putStringArrayList("items", (ArrayList<String>) itemsThree);
-                extras.putStringArrayList("dates", (ArrayList<String>) datesThree);
-                intent.putExtras(extras);
-                startActivity(intent);
+                goToActivity(CATEGORY_THREE, fruitColor, notAdded, noItemOrDate, noItemOrDate, itemsThree, datesThree);
             }
         });
         cardFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
-                Bundle extras = new Bundle();
-                extras.putString("color", "#56d1c1");
-                extras.putString("type", CATEGORY_FOUR);
-                extras.putString("title", CATEGORY_FOUR + "s List");
-                extras.putString("added", "false");
-                extras.putString("itemAdded", "null");
-                extras.putString("dateAdded", "null");
-                extras.putStringArrayList("items", (ArrayList<String>) itemsFour);
-                extras.putStringArrayList("dates", (ArrayList<String>) datesFour);
-                intent.putExtras(extras);
-                startActivity(intent);
+                goToActivity(CATEGORY_FOUR, drinkColor, notAdded, noItemOrDate, noItemOrDate, itemsFour, datesFive);
             }
         });
         cardFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
-                Bundle extras = new Bundle();
-                extras.putString("color", "#ed5c70");
-                extras.putString("title", CATEGORY_FIVE + " List");
-                extras.putString("type", CATEGORY_FIVE);
-                extras.putString("added", "false");
-                extras.putString("itemAdded", "null");
-                extras.putString("dateAdded", "null");
-                extras.putStringArrayList("items", (ArrayList<String>) itemsFive);
-                extras.putStringArrayList("dates", (ArrayList<String>) datesFive);
-                intent.putExtras(extras);
-                startActivity(intent);
+                goToActivity(CATEGORY_FIVE, meatColor, notAdded, noItemOrDate, noItemOrDate, itemsFive, datesFive);
             }
         });
         cardSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
-                Bundle extras = new Bundle();
-                extras.putString("color", "#b681fc");
-                extras.putString("title", CATEGORY_SIX + " List");
-                extras.putString("type", CATEGORY_SIX);
-                extras.putString("added", "false");
-                extras.putString("itemAdded", "null");
-                extras.putString("dateAdded", "null");
-                extras.putStringArrayList("items", (ArrayList<String>) itemsSix);
-                extras.putStringArrayList("dates", (ArrayList<String>) datesSix);
-                intent.putExtras(extras);
-                startActivity(intent);
+                goToActivity(CATEGORY_SIX, otherColor, notAdded, noItemOrDate, noItemOrDate, itemsSix, datesSix);
             }
         });
+    }
+    private void goToActivity(String category, String color, Boolean isAdded, String item, String date, List<String> items, List<String> dates){
+        //Opens Refrigerator Activity
+        Intent intent = new Intent(getActivity(), RefrigeratorActivity.class);
+        //Send data of this activity through bundle
+        Bundle extras = new Bundle();
+        extras.putString(COLOR, color);
+        extras.putString(TITLE, category + " List");
+        extras.putString(TYPE, category);
+        extras.putBoolean(ADDED, isAdded);
+        extras.putString(ITEM_ADDED, item);
+        extras.putString(DATE_ADDED, date);
+        extras.putStringArrayList(ITEMS, (ArrayList<String>) items);
+        extras.putStringArrayList(DATES, (ArrayList<String>) dates);
+        intent.putExtras(extras);
+        startActivity(intent);
     }
 }

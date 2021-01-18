@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.myfridge.R;
 import com.example.myfridge.adapters.FridgeItemsAdapter;
+import com.example.myfridge.fragments.RefrigeratorFragment;
 
 import org.apache.commons.io.FileUtils;
 
@@ -28,7 +29,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
     String title;
     String color;
     String type;
-    String added;
+    Boolean added;
     String itemAdded;
     String dateAdded;
     List<String> items;
@@ -44,14 +45,14 @@ public class RefrigeratorActivity extends AppCompatActivity {
 
         Bundle data = getIntent().getExtras();
 
-        color = data.getString("color");
-        title = data.getString("title");
-        items = data.getStringArrayList("items");
-        dates = data.getStringArrayList("dates");
-        type = data.getString("type");
-        added = data.getString("added");
-        itemAdded = data.getString("itemAdded");
-        dateAdded = data.getString("dateAdded");
+        color = data.getString(RefrigeratorFragment.COLOR);
+        title = data.getString(RefrigeratorFragment.TITLE);
+        items = data.getStringArrayList(RefrigeratorFragment.ITEMS);
+        dates = data.getStringArrayList(RefrigeratorFragment.DATES);
+        type = data.getString(RefrigeratorFragment.TYPE);
+        added = data.getBoolean(RefrigeratorFragment.ADDED);
+        itemAdded = data.getString(RefrigeratorFragment.ITEM_ADDED);
+        dateAdded = data.getString(RefrigeratorFragment.DATE_ADDED);
 
         tvTitle = findViewById(R.id.tvTitle);
         tvTitle.setText(title);
@@ -78,7 +79,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
         rvFridgeList.setLayoutManager(new LinearLayoutManager(this));
 
         //This saves the items added
-        if(added.equals("true")){
+        if(added.equals(RefrigeratorFragment.WAS_ADDED)){
             items.add(itemAdded);
             dates.add(dateAdded);
             //notify adapter
@@ -90,34 +91,34 @@ public class RefrigeratorActivity extends AppCompatActivity {
     //Checks which card view to save and load for appropriate date and item list.
     private File getDataFileForItem(String type){
         switch(type){
-            case "Dairy":
+            case RefrigeratorFragment.CATEGORY_ONE:
                 return new File(getFilesDir(), "dairyItems.txt");
-            case "Veggie":
+            case RefrigeratorFragment.CATEGORY_TWO:
                 return new File(getFilesDir(), "veggieItems.txt");
-            case "Fruit":
+            case RefrigeratorFragment.CATEGORY_THREE:
                 return new File(getFilesDir(), "fruitItems.txt");
-            case "Drink":
+            case RefrigeratorFragment.CATEGORY_FOUR:
                 return new File(getFilesDir(), "drinkItems.txt");
-            case "Meat":
+            case RefrigeratorFragment.CATEGORY_FIVE:
                 return new File(getFilesDir(), "meatItems.txt");
-            case "Other":
+            case RefrigeratorFragment.CATEGORY_SIX:
             default:
                 return new File(getFilesDir(), "otherItems.txt");
         }
     }
     private File getDataFileForDate(String type){
         switch(type){
-            case "Dairy":
+            case RefrigeratorFragment.CATEGORY_ONE:
                 return new File(getFilesDir(), "dairyDate.txt");
-            case "Veggie":
+            case RefrigeratorFragment.CATEGORY_TWO:
                 return new File(getFilesDir(), "veggieDate.txt");
-            case "Fruit":
+            case RefrigeratorFragment.CATEGORY_THREE:
                 return new File(getFilesDir(), "fruitDate.txt");
-            case "Drink":
+            case RefrigeratorFragment.CATEGORY_FOUR:
                 return new File(getFilesDir(), "drinkDate.txt");
-            case "Meat":
+            case RefrigeratorFragment.CATEGORY_FIVE:
                 return new File(getFilesDir(), "meatDate.txt");
-            case "Other":
+            case RefrigeratorFragment.CATEGORY_SIX:
             default:
                 return new File(getFilesDir(), "otherDate.txt");
         }
