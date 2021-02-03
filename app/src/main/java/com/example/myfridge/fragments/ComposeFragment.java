@@ -123,6 +123,8 @@ public class ComposeFragment extends Fragment{
     }
 
     //Initializes notification
+    //Following code from: https://www.youtube.com/watch?v=oLngUva-Ves&t=187s
+    //Retrieved on Jan. 9th, 2021
     private void scheduleNotification() {
         NotifyMe notifyMe = new NotifyMe.Builder(getContext())
                 .title("MyFridge")
