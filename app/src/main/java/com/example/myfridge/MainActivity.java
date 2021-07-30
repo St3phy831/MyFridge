@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment fragment;
-                //Must set all of them to Shopping list Fragment so it can compile and run
                 switch(menuItem.getItemId()){
                     case R.id.action_list:
                         fragment = new ShoppingListFragment();

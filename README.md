@@ -49,4 +49,5 @@ and expiration dates of a particular category in their specified text files.
 - I was also stuck on creating a notification at a specific date. I watched various videos and read
 Android Documentation to understand how notifications work. I tested it out in my project in a variety
 of different ways. Eventually, I came upon a video that facilitated the whole process using someone's
-created library. (Resource: https://www.youtube.com/watch?v=oLngUva-Ves&t=187s)
+created library (<a href="https://github.com/jakebonk/NotifyMe">NotifyMe</a>). (Resource:
+https://www.youtube.com/watch?v=oLngUva-Ves&t=187s)
