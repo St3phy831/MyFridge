@@ -40,7 +40,7 @@ can evaluate its condition and decide whether to use it or discard it)
 ### Challenges:
 - I was stuck on how to pass the item added by the user to the Refrigerator Fragment to be able to
 add and save data to be displayed, so I used a bundle to pass the data and open the Activity so the
-user could se that their item was added.
+user could see that their item was added.
 
 - Another challenge I had was reusing my Refrigerator Activity, so I had to send a bundle from the
 Refrigerator Fragment with a keyword of its designated category. This allowed me to save the items
