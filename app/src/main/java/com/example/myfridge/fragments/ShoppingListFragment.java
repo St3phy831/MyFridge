@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import com.example.myfridge.R;
 import com.example.myfridge.adapters.ItemsAdapter;
-import com.example.myfridge.cardActivities.ShoppingListActivity;
+import com.example.myfridge.cardActivities.EditActivity;
 
 import org.apache.commons.io.FileUtils;
 
@@ -35,6 +35,7 @@ import java.util.List;
 public class ShoppingListFragment extends Fragment {
     public static final String KEY_ITEM_TEXT = "item_text";
     public static final String KEY_ITEM_POSITION = "item_position";
+    public static final String CODE = "code";
     public static final int EDIT_CODE = 20;
     public static final int RESULT_OK = -1;
 
@@ -86,10 +87,11 @@ public class ShoppingListFragment extends Fragment {
             @Override
             public void onItemClicked(int position) {
                 //Create activity
-                Intent i = new Intent(getActivity(), ShoppingListActivity.class);
+                Intent i = new Intent(getActivity(), EditActivity.class);
                 //pass the data
                 i.putExtra(KEY_ITEM_TEXT, items.get(position));
                 i.putExtra(KEY_ITEM_POSITION, position);
+                i.putExtra(CODE, EDIT_CODE);
                 //display activity
                 startActivityForResult(i, EDIT_CODE);
                 Log.d(TAG, "Single click at position" + position);
@@ -116,7 +118,6 @@ public class ShoppingListFragment extends Fragment {
             }
         });
     }
-
     //handle data of result
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -133,7 +134,7 @@ public class ShoppingListFragment extends Fragment {
             saveItems();
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }else{
-            Log.w(TAG, "Unknown call to ShoppingListActivity");
+            Log.w(TAG, "Unknown call to " + TAG);
         }
     }
 

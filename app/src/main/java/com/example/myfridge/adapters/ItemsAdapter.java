@@ -12,10 +12,10 @@ import java.util.List;
 
 //display data from model in row of recycler view
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder>{
+
     public interface OnClickListener{
         void onItemClicked(int position);
     }
-
     public interface OnLongClickListener{
         void onItemLongClicked(int position);
     }

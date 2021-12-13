@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.HOME"/>
             </intent-filter>
         </receiver>
-        <activity android:name=".cardActivities.ShoppingListActivity"/>
+        <activity android:name=".cardActivities.EditActivity"/>
         <activity android:name=".cardActivities.RefrigeratorActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>

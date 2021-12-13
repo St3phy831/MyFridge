@@ -15,19 +15,24 @@ import java.util.List;
 
 public class FridgeItemsAdapter extends RecyclerView.Adapter<FridgeItemsAdapter.ViewHolder>{
 
-    public interface OnLongClick{
+    public interface OnClick{
         void onItemClicked(int position);
+    }
+    public interface OnLongClick{
+        void onItemLongClicked(int position);
     }
 
     List<String> fridgeItems;
     List<String> itemDates;
     RelativeLayout itemContainer;
     OnLongClick longClickListener;
+    OnClick onClickListener;
 
-    public FridgeItemsAdapter(List<String> fridgeItems, List<String> itemDates, OnLongClick longClickListener){
+    public FridgeItemsAdapter(List<String> fridgeItems, List<String> itemDates, OnLongClick longClickListener, OnClick onClickListener){
         this.fridgeItems = fridgeItems;
         this.itemDates = itemDates;
         this.longClickListener = longClickListener;
+        this.onClickListener = onClickListener;
     }
     @NonNull
     @Override
@@ -63,12 +68,18 @@ public class FridgeItemsAdapter extends RecyclerView.Adapter<FridgeItemsAdapter.
         public void bind(String item, String date) {
             tvFridgeItem.setText(item);
             tvDate.setText(date);
-
+            itemContainer.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //notify listener which item was clicked
+                    onClickListener.onItemClicked(getAdapterPosition());
+                }
+            });
             itemContainer.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
                     //notify listener which item was clicked
-                    longClickListener.onItemClicked(getAdapterPosition());
+                    longClickListener.onItemLongClicked(getAdapterPosition());
                     return true;
                 }
             });

@@ -1,9 +1,11 @@
 package com.example.myfridge.cardActivities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +26,11 @@ import java.util.List;
 
 public class RefrigeratorActivity extends AppCompatActivity {
     public static final String TAG = "RefrigeratorActivity";
+    public static final String KEY_ITEM_TEXT = "item_text";
+    public static final String KEY_ITEM_POSITION = "item_position";
+    public static final String CODE = "code";
+    public static final int EDIT_CODE = 17;
+    public static final int RESULT_OK = -1;
 
     TextView tvTitle;
     String title;
@@ -62,7 +69,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
 
         FridgeItemsAdapter.OnLongClick longClick = new FridgeItemsAdapter.OnLongClick(){
             @Override
-            public void onItemClicked(int position) {
+            public void onItemLongClicked(int position) {
                 //Delete item
                 items.remove(position);
                 dates.remove(position);
@@ -73,8 +80,23 @@ public class RefrigeratorActivity extends AppCompatActivity {
             }
         };
 
+        FridgeItemsAdapter.OnClick onClick = new FridgeItemsAdapter.OnClick() {
+            @Override
+            public void onItemClicked(int position) {
+                //Create activity
+                Intent i = new Intent(RefrigeratorActivity.this, EditActivity.class);
+                //pass the data
+                i.putExtra(KEY_ITEM_TEXT, items.get(position));
+                i.putExtra(KEY_ITEM_POSITION, position);
+                i.putExtra(CODE, EDIT_CODE);
+                //display activity
+                startActivityForResult(i, EDIT_CODE);
+                Log.d(TAG, "Single CLick at position" + position);
+            }
+        };
+
         rvFridgeList = findViewById(R.id.rvFridgeItems);
-        fridgeItemsAdapter = new FridgeItemsAdapter(items, dates, longClick);
+        fridgeItemsAdapter = new FridgeItemsAdapter(items, dates, longClick, onClick);
         rvFridgeList.setAdapter(fridgeItemsAdapter);
         rvFridgeList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -88,6 +110,27 @@ public class RefrigeratorActivity extends AppCompatActivity {
             saveItems();
         }
     }
+    //handle data of result
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == EDIT_CODE) {
+            //retrieve updated text value
+            String itemText = data.getStringExtra(KEY_ITEM_TEXT);
+            //extract original position of edited item from position key
+            int position = data.getExtras().getInt(KEY_ITEM_POSITION);
+            //update model with new item
+            items.set(position, itemText);
+            //notify adapter
+            fridgeItemsAdapter.notifyItemChanged(position);
+            //persists
+            saveItems();
+            Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+        } else {
+            Log.w(TAG, "Unknown call to " + TAG);
+        }
+    }
+
     //Checks which card view to save and load for appropriate date and item list.
     private File getDataFileForItem(String type){
         switch(type){
