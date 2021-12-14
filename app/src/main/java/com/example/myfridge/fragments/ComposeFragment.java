@@ -68,7 +68,6 @@ public class ComposeFragment extends Fragment{
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 category = adapterView.getItemAtPosition(i).toString();
-                Toast.makeText(getContext(), category, Toast.LENGTH_SHORT).show();
             }
 
             @Override
