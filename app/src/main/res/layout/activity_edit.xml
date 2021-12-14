@@ -17,7 +17,8 @@
         android:layout_marginTop="0dp"
         android:ems="10"
         android:hint="Update the Item"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/btnSave"
