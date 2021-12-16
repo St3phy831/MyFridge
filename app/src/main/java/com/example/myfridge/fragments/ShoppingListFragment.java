@@ -77,7 +77,7 @@ public class ShoppingListFragment extends Fragment {
                 items.remove(position);
                 //notify adapter
                 itemsAdapter.notifyItemRemoved(position);
-                Toast.makeText(getContext(), "Item was deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Deleted", Toast.LENGTH_SHORT).show();
                 saveItems();
 
             }
@@ -114,7 +114,7 @@ public class ShoppingListFragment extends Fragment {
                 etItem.setText("");
                 //Saves
                 saveItems();
-                Toast.makeText(getContext(), "Item was added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Added", Toast.LENGTH_SHORT).show();
             }
         });
     }

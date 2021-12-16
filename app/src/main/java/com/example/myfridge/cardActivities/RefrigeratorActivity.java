@@ -75,7 +75,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
                 dates.remove(position);
                 //notify adapter
                 fridgeItemsAdapter.notifyItemRemoved(position);
-                Toast.makeText(getApplicationContext(), "Item was deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
                 saveItems();
             }
         };
@@ -106,7 +106,7 @@ public class RefrigeratorActivity extends AppCompatActivity {
             dates.add(dateAdded);
             //notify adapter
             fridgeItemsAdapter.notifyItemInserted(items.size()-1);
-            Toast.makeText(getApplicationContext(), "Item was added", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Added", Toast.LENGTH_SHORT).show();
             saveItems();
         }
     }
