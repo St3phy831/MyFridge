@@ -22,10 +22,10 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
+        getSupportActionBar().setTitle("Edit Item");
+
         etItem = findViewById(R.id.etItem);
         btnSave = findViewById(R.id.btnSave);
-
-        getSupportActionBar().setTitle("Edit Item");
 
         if (getIntent().getExtras().getInt("code") == 20)
         {
