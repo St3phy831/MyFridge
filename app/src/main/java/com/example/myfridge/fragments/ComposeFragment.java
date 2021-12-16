@@ -98,9 +98,9 @@ public class ComposeFragment extends Fragment{
                 itemAdded = item.getText().toString();
                 //Check is item or date input is empty
                 if(itemAdded.isEmpty()){
-                    Toast.makeText(getContext(), "Item cannot be empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Item Can't be Empty", Toast.LENGTH_SHORT).show();
                 }else if(currentDateString.isEmpty()){
-                    Toast.makeText(getContext(), "Must have date", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Must have Date", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Bundle bundle = new Bundle();

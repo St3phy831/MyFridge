@@ -106,15 +106,19 @@ public class ShoppingListFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String buyItem = etItem.getText().toString();
-                //add item to model
-                items.add(buyItem);
-                //Notify adapter something added
-                itemsAdapter.notifyItemInserted(items.size() -1);
-                //clear text
-                etItem.setText("");
-                //Saves
-                saveItems();
-                Toast.makeText(getContext(), "Added", Toast.LENGTH_SHORT).show();
+                if(buyItem.isEmpty()){
+                    Toast.makeText(getContext(), "Can't be Empty", Toast.LENGTH_SHORT).show();
+                }else {
+                    //add item to model
+                    items.add(buyItem);
+                    //Notify adapter something added
+                    itemsAdapter.notifyItemInserted(items.size() - 1);
+                    //clear text
+                    etItem.setText("");
+                    //Saves
+                    saveItems();
+                    Toast.makeText(getContext(), "Added", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
