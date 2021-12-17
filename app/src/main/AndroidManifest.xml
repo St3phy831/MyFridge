@@ -20,7 +20,7 @@
             </intent-filter>
         </receiver>
         <activity android:name=".cardActivities.EditActivity"/>
-        <activity android:name=".cardActivities.RefrigeratorActivity"/>
+        <activity android:name=".cardActivities.RefrigeratorActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

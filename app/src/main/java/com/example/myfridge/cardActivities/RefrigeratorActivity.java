@@ -50,6 +50,8 @@ public class RefrigeratorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refrigerator);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Bundle data = getIntent().getExtras();
 
         color = data.getString(RefrigeratorFragment.COLOR);
