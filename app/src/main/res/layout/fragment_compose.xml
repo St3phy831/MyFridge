@@ -15,7 +15,7 @@
         android:layout_alignParentEnd="false"
         android:layout_marginStart="130dp"
         android:layout_marginEnd="0dp"
-        android:text="Add Item"
+        android:text="@string/add_item"
         android:textColor="#673AB7"
         android:textSize="30sp" />
 
@@ -27,7 +27,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
-        android:text="Category:"
+        android:text="@string/category"
         android:textColor="#0C0C0C"
         android:textSize="20sp" />
 
@@ -50,7 +50,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
-        android:text="Expiration Date:"
+        android:text="@string/expiration_date"
         android:textColor="#0C0C0C"
         android:textSize="20sp" />
 
@@ -63,7 +63,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="25dp"
         android:layout_toEndOf="@+id/tvExpiration"
-        android:text="Date Picker" />
+        android:text="@string/date_picker" />
 
     <Button
         android:id="@+id/btnSubmit"
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:text="Enter" />
+        android:text="@string/enter" />
 
     <EditText
         android:id="@+id/etItemAdded"
@@ -82,7 +82,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="10dp"
-        android:hint="Enter an Item..."
+        android:hint="@string/enter_an_item"
         android:inputType="textPersonName" />
 
     <TextView

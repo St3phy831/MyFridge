@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:text="add" />
+        android:text="@string/add" />
 
     <EditText
         android:id="@+id/etItem"
@@ -23,7 +23,7 @@
         android:layout_marginEnd="0dp"
         android:layout_toStartOf="@+id/btnAdd"
         android:ems="10"
-        android:hint="Enter an Item" />
+        android:hint="@string/enter_an_item" />
 
     <TextView
         android:id="@+id/tvBuyList"
@@ -34,7 +34,7 @@
         android:layout_alignParentEnd="false"
         android:layout_marginStart="100dp"
         android:layout_marginEnd="0dp"
-        android:text="Shopping List"
+        android:text="@string/shopping_list"
         android:textColor="#673AB7"
         android:textSize="30sp" />
 

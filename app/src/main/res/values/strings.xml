@@ -1,5 +1,23 @@
 <resources>
     <string name="app_name">MyFridge</string>
+    <string name="fridge">Fridge</string>
+    <string name="add">Add</string>
+    <string name="shopping_list">Shopping List</string>
+    <string name="save">save</string>
+    <string name="update_the_item">Update the Item</string>
+    <string name="add_item">Add Item</string>
+    <string name="category">Category:</string>
+    <string name="expiration_date">Expiration Date:</string>
+    <string name="date_picker">Date Picker</string>
+    <string name="enter">Enter</string>
+    <string name="enter_an_item">Enter an Item…</string>
+    <string name="refrigerator">Refrigerator</string>
+    <string name="dairy">DAIRY</string>
+    <string name="veggies">VEGGIES</string>
+    <string name="fruits">FRUITS</string>
+    <string name="drinks">DRINKS</string>
+    <string name="meats">MEATS</string>
+    <string name="other">OTHER</string>
     <string-array name="categories">
         <item>Dairy</item>
         <item>Veggie</item>
